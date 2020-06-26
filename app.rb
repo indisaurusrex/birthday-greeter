@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative 'web_helper'
 
 class Birthday < Sinatra::Base
 
@@ -8,6 +9,9 @@ class Birthday < Sinatra::Base
 
   post '/birthday' do
     @name = params[:name]
+    @day = params[:day]
+    @month = params[:month]
+    birthday?(@day, @month)
     erb :birthday
   end
 
